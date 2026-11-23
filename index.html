@@ -3,49 +3,70 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>abstopia</title>
-  <link rel="stylesheet" href="style.css">
+  <title>abstopia — /about</title>
+  <!-- Pulls shared theme variables and base aesthetics from the root repo -->
+  <link rel="stylesheet" href="/style.css">
+  <style>
+    /* Sub-page reading override (so long text isn't vertically centered like the root hub) */
+    body {
+      display: block;
+      padding: 3.5rem 1.5rem;
+    }
+    .page {
+      max-width: 640px;
+      margin: 0 auto;
+    }
+    .crumb {
+      display: inline-block;
+      margin-bottom: 2rem;
+      font-size: 0.85rem;
+      color: var(--muted);
+      text-decoration: none;
+    }
+    .crumb:hover {
+      color: var(--accent);
+    }
+    section {
+      margin-top: 2.25rem;
+    }
+    h2 {
+      font-size: 1rem;
+      color: var(--hot);
+      text-transform: lowercase;
+      letter-spacing: 0.04em;
+      margin-bottom: 0.75rem;
+    }
+    p, li {
+      font-size: 0.92rem;
+      color: var(--text);
+    }
+  </style>
 </head>
 <body>
-  <!-- Hidden CSS-only toggle for Easter Egg #2 -->
-  <input type="checkbox" id="singularity-toggle" aria-hidden="true">
-
-  <main class="void">
-    <!-- Pure CSS Black Hole -->
-    <div class="cosmos" title="Approach the event horizon...">
-      <div class="lensing-halo"></div>
-      <div class="accretion-disk"></div>
-      <div class="event-horizon">
-        <span class="photon-ring"></span>
-      </div>
-      <div class="telemetry">r_s = 2GM/c² &nbsp;|&nbsp; τ → 0</div>
-    </div>
+  <main class="page">
+    <a href="/" class="crumb">← ~/abstopia</a>
 
     <header>
-      <h1>abstopia</h1>
-      <p class="sub">~/index — <span class="status">local-first</span></p>
+      <h1>Zia Ur Rehman</h1>
+      <p class="sub">/about — medicine, hardware, epistemology</p>
     </header>
 
-    <ul class="directory">
-      <li>
-        <a href="/about/">/about</a>
-        <span class="desc">bio, hardware, notes</span>
-      </li>
-      <li>
-        <a href="/myweb/">/myweb</a>
-        <span class="desc">philosophy &amp; instrumentalism</span>
-      </li>
-      <li>
-        <a href="https://github.com/abstopia">github</a>
-        <span class="desc">repositories</span>
-      </li>
-    </ul>
+    <section>
+      <h2>// current</h2>
+      <p>
+        Final-year MBBS student in Abbottabad. Outside clinical rotations, I build and salvage 
+        hardware, maintain offline knowledge systems, and write on instrumentalism and epistemology.
+      </p>
+    </section>
 
-    <!-- Easter Egg #3: Invisible until highlighted with cursor -->
-    <p class="hidden-axiom">The representation is never the represented.</p>
+    <section>
+      <h2>// stack &amp; tinkering</h2>
+      <ul>
+        <li><strong>Systems:</strong> Arch/Fedora Linux, WSL2, local-first &amp; zero-bloat workflows.</li>
+        <li><strong>Hardware:</strong> Laptop refurbishment, custom enclosures, low-power home servers.</li>
+        <li><strong>Offline:</strong> Self-hosted Kiwix archives and local LLM inference.</li>
+      </ul>
+    </section>
   </main>
-
-  <!-- Easter Egg #2 Trigger: Tiny pulsing pixel in bottom-right -->
-  <label for="singularity-toggle" class="anomaly-dot" title="Collapse">·</label>
 </body>
 </html>
