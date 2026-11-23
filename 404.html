@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>404 — Event Horizon</title>
+  <!-- Root-relative path ensures it loads even on nested broken URLs like /a/b/c -->
+  <link rel="stylesheet" href="/style.css">
+  <style>
+    .error-wrap {
+      text-align: center;
+    }
+    .code-tag {
+      display: inline-block;
+      color: var(--hot);
+      font-size: 0.85rem;
+      letter-spacing: 0.08em;
+      margin-bottom: 0.4rem;
+    }
+    .error-msg {
+      color: var(--muted);
+      font-size: 0.9rem;
+      margin: 0.75rem 0 2rem 0;
+      line-height: 1.7;
+    }
+    .escape-links {
+      display: flex;
+      justify-content: center;
+      gap: 1.5rem;
+      font-size: 0.9rem;
+    }
+    .escape-links a {
+      color: var(--accent);
+      text-decoration: none;
+    }
+    .escape-links a:hover {
+      text-decoration: underline;
+    }
+  </style>
+</head>
+<body>
+  <main class="void error-wrap">
+    <div class="cosmos" title="r < r_s">
+      <div class="lensing-halo"></div>
+      <div class="accretion-disk"></div>
+      <div class="event-horizon">
+        <span class="photon-ring"></span>
+      </div>
+      <div class="telemetry">404 // information_paradox</div>
+    </div>
+
+    <span class="code-tag">ERR_EVENT_HORIZON // 404</span>
+    <h1>No information escapes here</h1>
+    <p class="error-msg">
+      The path you requested sits beyond the Schwarzschild radius — 
+      or never existed as a premise to begin with.
+    </p>
+
+    <nav class="escape-links">
+      <a href="/">← ~/abstopia</a>
+      <a href="/about/">/about</a>
+      <a href="/abstopia/">/abstopia</a>
+    </nav>
+  </main>
+</body>
+</html>
