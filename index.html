@@ -4,78 +4,48 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>abstopia</title>
-  <style>
-    :root {
-      --bg: #111111;
-      --text: #e4e4e7;
-      --muted: #71717a;
-      --accent: #38bdf8;
-      --border: #27272a;
-    }
-    body {
-      background: var(--bg);
-      color: var(--text);
-      font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
-      max-width: 540px;
-      margin: 0 auto;
-      padding: 4rem 1.5rem;
-      line-height: 1.7;
-    }
-    h1 {
-      font-size: 1.25rem;
-      font-weight: 600;
-      margin: 0 0 0.25rem 0;
-    }
-    .sub {
-      color: var(--muted);
-      font-size: 0.9rem;
-      margin: 0 0 2rem 0;
-      padding-bottom: 1rem;
-      border-bottom: 1px solid var(--border);
-    }
-    ul {
-      list-style: none;
-      padding: 0;
-      margin: 0;
-    }
-    li {
-      margin-bottom: 0.85rem;
-      display: flex;
-      justify-content: space-between;
-      align-items: baseline;
-      gap: 1rem;
-    }
-    a {
-      color: var(--accent);
-      text-decoration: none;
-    }
-    a:hover {
-      text-decoration: underline;
-    }
-    .desc {
-      color: var(--muted);
-      font-size: 0.85rem;
-      text-align: right;
-    }
-  </style>
+  <link rel="stylesheet" href="style.css">
 </head>
 <body>
-  <h1>abstopia</h1>
-  <p class="sub">~/index</p>
+  <!-- Hidden CSS-only toggle for Easter Egg #2 -->
+  <input type="checkbox" id="singularity-toggle" aria-hidden="true">
 
-  <ul>
-    <li>
-      <a href="/about/">/about</a>
-      <span class="desc">bio, hardware, notes</span>
-    </li>
-    <li>
-      <a href="/myweb/">/myweb</a>
-      <span class="desc">philosophy &amp; instrumentalism</span>
-    </li>
-    <li>
-      <a href="https://github.com/abstopia">github</a>
-      <span class="desc">repositories</span>
-    </li>
-  </ul>
+  <main class="void">
+    <!-- Pure CSS Black Hole -->
+    <div class="cosmos" title="Approach the event horizon...">
+      <div class="lensing-halo"></div>
+      <div class="accretion-disk"></div>
+      <div class="event-horizon">
+        <span class="photon-ring"></span>
+      </div>
+      <div class="telemetry">r_s = 2GM/c² &nbsp;|&nbsp; τ → 0</div>
+    </div>
+
+    <header>
+      <h1>abstopia</h1>
+      <p class="sub">~/index — <span class="status">local-first</span></p>
+    </header>
+
+    <ul class="directory">
+      <li>
+        <a href="/about/">/about</a>
+        <span class="desc">bio, hardware, notes</span>
+      </li>
+      <li>
+        <a href="/myweb/">/myweb</a>
+        <span class="desc">philosophy &amp; instrumentalism</span>
+      </li>
+      <li>
+        <a href="https://github.com/abstopia">github</a>
+        <span class="desc">repositories</span>
+      </li>
+    </ul>
+
+    <!-- Easter Egg #3: Invisible until highlighted with cursor -->
+    <p class="hidden-axiom">The representation is never the represented.</p>
+  </main>
+
+  <!-- Easter Egg #2 Trigger: Tiny pulsing pixel in bottom-right -->
+  <label for="singularity-toggle" class="anomaly-dot" title="Collapse">·</label>
 </body>
 </html>
