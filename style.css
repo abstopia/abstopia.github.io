@@ -1,0 +1,330 @@
+:root {
+  --bg: #070709;
+  --text: #e4e4e7;
+  --muted: #71717a;
+  --accent: #38bdf8;
+  --hot: #fb923c;
+  --core-glow: rgba(251, 146, 60, 0.45);
+  --border: #1e1e24;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  background-color: var(--bg);
+  /* Subtle deep-space starfield using pure CSS radial gradients */
+  background-image:
+    radial-gradient(1px 1px at 15% 22%, rgba(255, 255, 255, 0.35), transparent),
+    radial-gradient(1px 1px at 78% 14%, rgba(255, 255, 255, 0.25), transparent),
+    radial-gradient(1.5px 1.5px at 84% 68%, rgba(56, 189, 248, 0.3), transparent),
+    radial-gradient(1px 1px at 26% 79%, rgba(255, 255, 255, 0.2), transparent),
+    radial-gradient(1px 1px at 52% 91%, rgba(255, 255, 255, 0.25), transparent);
+  color: var(--text);
+  font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+  margin: 0;
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 2rem 1.5rem;
+  overflow-x: hidden;
+}
+
+#singularity-toggle {
+  display: none;
+}
+
+.void {
+  width: 100%;
+  max-width: 520px;
+  transition: transform 1.2s cubic-bezier(0.22, 1, 0.36, 1), filter 1.2s ease;
+}
+
+/* =========================================
+   BLACK HOLE GRAPHIC & GRAVITATIONAL LENSING
+   ========================================= */
+.cosmos {
+  position: relative;
+  width: 240px;
+  height: 170px;
+  margin: 0 auto 2rem auto;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: crosshair;
+  user-select: none;
+}
+
+/* Upper bent light arch (gravitational lensing of far disk) */
+.lensing-halo {
+  position: absolute;
+  width: 112px;
+  height: 112px;
+  border-radius: 50%;
+  background: conic-gradient(
+    from 210deg,
+    transparent 0deg,
+    rgba(251, 146, 60, 0.15) 45deg,
+    rgba(253, 224, 71, 0.65) 110deg,
+    rgba(186, 230, 253, 0.8) 160deg,
+    transparent 230deg
+  );
+  filter: blur(4px);
+  transform: translateY(-10px) scaleY(0.88);
+  animation: pulseHalo 6s ease-in-out infinite;
+  pointer-events: none;
+}
+
+/* Tilted swirling accretion disk */
+.accretion-disk {
+  position: absolute;
+  width: 220px;
+  height: 220px;
+  border-radius: 50%;
+  background: conic-gradient(
+    from 0deg,
+    rgba(234, 88, 12, 0.1) 0%,
+    rgba(251, 146, 60, 0.85) 22%,
+    rgba(254, 240, 138, 0.95) 38%,
+    rgba(125, 211, 252, 0.9) 55%,
+    rgba(56, 189, 248, 0.35) 75%,
+    rgba(234, 88, 12, 0.1) 100%
+  );
+  /* Hollow out the center so it wraps around the event horizon */
+  -webkit-mask-image: radial-gradient(circle, transparent 36%, black 42%, black 66%, transparent 72%);
+  mask-image: radial-gradient(circle, transparent 36%, black 42%, black 66%, transparent 72%);
+  transform: rotateX(73deg) rotateZ(-14deg);
+  animation: spinDisk 9s linear infinite;
+  box-shadow: 0 0 35px var(--core-glow);
+  transition: animation-duration 0.4s ease, filter 0.6s ease;
+}
+
+/* The Event Horizon (Singularity shadow) */
+.event-horizon {
+  position: relative;
+  width: 76px;
+  height: 76px;
+  border-radius: 50%;
+  background: #000000;
+  z-index: 2;
+  box-shadow:
+    0 0 0 1.5px rgba(254, 240, 138, 0.75),
+    0 0 14px 3px rgba(251, 146, 60, 0.65),
+    0 0 38px 8px rgba(56, 189, 248, 0.22),
+    inset 0 0 12px #000000;
+  transition: transform 0.6s cubic-bezier(0.22, 1, 0.36, 1), box-shadow 0.6s ease;
+}
+
+/* Inner photon sphere shimmer */
+.photon-ring {
+  position: absolute;
+  inset: -3px;
+  border-radius: 50%;
+  border: 1px solid rgba(255, 255, 255, 0.35);
+  opacity: 0.6;
+  animation: spinRing 4s linear infinite reverse;
+}
+
+/* =========================================
+   EASTER EGG #1: TIME DILATION ON HOVER
+   ========================================= */
+.telemetry {
+  position: absolute;
+  bottom: -6px;
+  font-size: 0.7rem;
+  color: var(--hot);
+  letter-spacing: 0.06em;
+  opacity: 0;
+  transform: translateY(4px);
+  transition: opacity 0.4s ease, transform 0.4s ease;
+  pointer-events: none;
+}
+
+.cosmos:hover .accretion-disk,
+.cosmos:active .accretion-disk {
+  animation-duration: 1.4s;
+  filter: brightness(1.35) contrast(1.15);
+}
+
+.cosmos:hover .event-horizon,
+.cosmos:active .event-horizon {
+  transform: scale(1.12);
+  box-shadow:
+    0 0 0 2px #ffffff,
+    0 0 22px 6px rgba(251, 146, 60, 0.9),
+    0 0 55px 14px rgba(56, 189, 248, 0.45);
+}
+
+.cosmos:hover .telemetry,
+.cosmos:active .telemetry {
+  opacity: 0.9;
+  transform: translateY(0);
+}
+
+/* =========================================
+   DIRECTORY & TYPOGRAPHY
+   ========================================= */
+header {
+  margin-bottom: 1.75rem;
+  padding-bottom: 1rem;
+  border-bottom: 1px solid var(--border);
+}
+
+h1 {
+  font-size: 1.3rem;
+  font-weight: 600;
+  margin: 0 0 0.25rem 0;
+  letter-spacing: -0.02em;
+}
+
+.sub {
+  color: var(--muted);
+  font-size: 0.85rem;
+  margin: 0;
+}
+
+.status {
+  color: #4ade80;
+}
+
+.directory {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.directory li {
+  margin-bottom: 0.9rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  gap: 1rem;
+  padding: 0.35rem 0.5rem;
+  border-radius: 4px;
+  transition: transform 0.35s ease, background-color 0.25s ease, opacity 0.6s ease;
+}
+
+.directory li:hover {
+  background-color: rgba(255, 255, 255, 0.03);
+  transform: translateX(4px);
+}
+
+.directory a {
+  color: var(--accent);
+  text-decoration: none;
+  font-weight: 500;
+}
+
+.directory a:hover {
+  text-decoration: underline;
+}
+
+.desc {
+  color: var(--muted);
+  font-size: 0.82rem;
+  text-align: right;
+}
+
+/* =========================================
+   EASTER EGG #3: INVISIBLE HIGHLIGHT AXIOM
+   ========================================= */
+.hidden-axiom {
+  margin-top: 2.5rem;
+  font-size: 0.75rem;
+  color: var(--bg);
+  user-select: text;
+  text-align: center;
+}
+
+.hidden-axiom::selection {
+  background: var(--accent);
+  color: #000000;
+}
+
+/* =========================================
+   EASTER EGG #2: GRAVITATIONAL COLLAPSE DOT
+   ========================================= */
+.anomaly-dot {
+  position: fixed;
+  bottom: 14px;
+  right: 18px;
+  color: var(--muted);
+  font-size: 1.4rem;
+  cursor: pointer;
+  opacity: 0.45;
+  transition: opacity 0.3s ease, color 0.3s ease, transform 0.3s ease;
+  user-select: none;
+}
+
+.anomaly-dot:hover {
+  opacity: 1;
+  color: var(--hot);
+  transform: scale(1.4);
+}
+
+/* When the bottom-right dot is clicked, links spaghettify & pull into the black hole */
+#singularity-toggle:checked ~ .void .directory li {
+  transform: translateY(-130px) scale(0.05) rotate(18deg);
+  opacity: 0;
+  pointer-events: none;
+}
+
+#singularity-toggle:checked ~ .void header {
+  transform: translateY(-70px) scale(0.4);
+  opacity: 0.15;
+  transition: all 0.9s ease;
+}
+
+#singularity-toggle:checked ~ .void .event-horizon {
+  transform: scale(1.45);
+  box-shadow:
+    0 0 0 2px #fff,
+    0 0 30px 10px rgba(251, 146, 60, 0.95),
+    0 0 80px 25px rgba(56, 189, 248, 0.5);
+}
+
+#singularity-toggle:checked ~ .void .accretion-disk {
+  animation-duration: 0.8s;
+}
+
+#singularity-toggle:checked ~ .anomaly-dot {
+  color: var(--accent);
+  opacity: 1;
+}
+
+/* =========================================
+   KEYFRAMES
+   ========================================= */
+@keyframes spinDisk {
+  0% {
+    transform: rotateX(73deg) rotateZ(0deg);
+  }
+  100% {
+    transform: rotateX(73deg) rotateZ(360deg);
+  }
+}
+
+@keyframes spinRing {
+  0% {
+    transform: rotate(0deg) scale(1);
+  }
+  50% {
+    transform: rotate(180deg) scale(1.03);
+  }
+  100% {
+    transform: rotate(360deg) scale(1);
+  }
+}
+
+@keyframes pulseHalo {
+  0%, 100% {
+    opacity: 0.75;
+    transform: translateY(-10px) scaleY(0.88);
+  }
+  50% {
+    opacity: 1;
+    transform: translateY(-11px) scaleY(0.92);
+  }
+}
